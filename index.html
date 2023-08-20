@@ -15,7 +15,10 @@
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <link href="./public/styles.css" rel="stylesheet" />
 
     <script
@@ -26,11 +29,13 @@
   <body class="bg-gray-light">
     <div class="min-h-full">
       <nav>
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
           <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <img class="h-8 w-8" src="./public/images/logo.svg" alt="Logo" />
+                <a href="/">
+                  <img class="w-28" src="./public/images/logo.png" alt="Logo" />
+                </a>
               </div>
             </div>
 
@@ -41,7 +46,7 @@
                   <button
                     @click="isMenuActive = !isMenuActive"
                     type="button"
-                    class="hover:bg-theme-text border-theme-text rounded-md border px-4 py-2 text-xs font-semibold hover:text-white md:text-base"
+                    class="rounded-md border border-theme-text px-4 py-2 text-xs font-semibold transition-colors hover:bg-theme-text hover:text-white md:text-base"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
@@ -52,7 +57,7 @@
                 </div>
 
                 <div
-                  class="border-theme-gray-dark absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-md border bg-white p-4 shadow-lg focus:outline-none md:w-64"
+                  class="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-md border border-theme-gray-dark bg-white p-4 shadow-lg focus:outline-none md:w-64"
                   id="user-menu"
                   role="menu"
                   aria-orientation="vertical"
@@ -65,7 +70,7 @@
                   @keydown.escape.window="isMenuActive = false"
                 >
                   <div
-                    class="border-theme-gray-light flex items-center gap-4 border-b p-1 pb-4"
+                    class="flex items-center gap-4 border-b border-theme-gray-light p-1 pb-4"
                   >
                     <img
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -86,7 +91,7 @@
                   </div>
 
                   <div
-                    class="border-b-theme-gray-light flex flex-col gap-1 border-b py-2"
+                    class="flex flex-col gap-1 border-b border-b-theme-gray-light py-2"
                   >
                     <a
                       href="#"
@@ -100,7 +105,7 @@
                     >
                       My Projects
                       <div
-                        class="d-block text-xxs flex h-4 w-4 items-center justify-center rounded-full bg-[#FDF5F8] font-serif font-bold text-[#DF5170]"
+                        class="d-block flex h-4 w-4 items-center justify-center rounded-full bg-[#FDF5F8] font-serif text-xxs font-bold text-[#DF5170]"
                       >
                         3
                       </div>
@@ -131,7 +136,7 @@
                       </div>
 
                       <div
-                        class="border-theme-gray-dark z-11 absolute -left-[95%] top-0 mt-2 w-36 origin-top-right rounded-md border bg-white p-4 shadow-lg focus:outline-none md:w-48"
+                        class="z-11 absolute -left-[95%] top-0 mt-2 w-36 origin-top-right rounded-md border border-theme-gray-dark bg-white p-4 shadow-lg focus:outline-none md:w-48"
                         role="menu"
                         aria-orientation="vertical"
                         tabindex="-1"
@@ -273,7 +278,7 @@
 
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
             <!-- Summary -->
-            <div class="card-wrapper lg:col-span-6">
+            <div data-aos="fade-up" class="card-wrapper lg:col-span-6">
               <h2 class="card-heading">Summary</h2>
 
               <div class="flex w-full flex-col gap-6 lg:flex-row lg:gap-0">
@@ -315,12 +320,20 @@
             </div>
 
             <!-- Rating Point -->
-            <div class="card-wrapper lg:col-span-6">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              class="card-wrapper lg:col-span-6"
+            >
               <h2 class="card-heading">Rating Point</h2>
             </div>
 
             <!-- Feedback -->
-            <div class="card-wrapper lg:col-span-7">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="card-wrapper lg:col-span-7"
+            >
               <h2 class="card-heading">Feedback</h2>
 
               <div class="divide-y divide-gray-100">
@@ -356,14 +369,8 @@
                     </div>
 
                     <div class="flex gap-2">
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Kommunikation</span
-                      >
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Pris</span
-                      >
+                      <span class="badge">Kommunikation</span>
+                      <span class="badge">Pris</span>
                     </div>
                   </div>
                 </div>
@@ -400,14 +407,8 @@
                     </div>
 
                     <div class="flex gap-2">
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Betjening</span
-                      >
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Andet</span
-                      >
+                      <span class="badge">Betjening</span>
+                      <span class="badge">Andet</span>
                     </div>
                   </div>
                 </div>
@@ -444,14 +445,8 @@
                     </div>
 
                     <div class="flex gap-2">
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Ventetid</span
-                      >
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Behandling</span
-                      >
+                      <span class="badge">Ventetid</span>
+                      <span class="badge">Behandling</span>
                     </div>
                   </div>
                 </div>
@@ -490,14 +485,8 @@
                     </div>
 
                     <div class="flex gap-2">
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Kommunikation</span
-                      >
-                      <span
-                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                        >Pris</span
-                      >
+                      <span class="badge">Kommunikation</span>
+                      <span class="badge">Pris</span>
                     </div>
                   </div>
                 </div>
@@ -505,7 +494,11 @@
             </div>
 
             <!-- Critical Feedback -->
-            <div class="card-wrapper lg:col-span-5">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
+              class="card-wrapper lg:col-span-5"
+            >
               <h2 class="card-heading">Critical Feedback</h2>
 
               <div class="relative">
@@ -637,21 +630,9 @@
                           </div>
 
                           <div class="flex gap-2">
-                            <span
-                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                            >
-                              Kommunikation
-                            </span>
-                            <span
-                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                            >
-                              Betjening
-                            </span>
-                            <span
-                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
-                            >
-                              Pris
-                            </span>
+                            <span class="badge"> Kommunikation </span>
+                            <span class="badge"> Betjening </span>
+                            <span class="badge"> Pris </span>
                           </div>
                         </div>
                       </div>
@@ -663,7 +644,11 @@
             </div>
 
             <!-- Lead Conversion Funnel -->
-            <div class="card-wrapper lg:col-span-6">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              class="card-wrapper lg:col-span-6"
+            >
               <h2 class="card-heading">Lead Conversion Funnel</h2>
 
               <div
@@ -720,7 +705,11 @@
             </div>
 
             <!-- Score History -->
-            <div class="card-wrapper lg:col-span-6">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="card-wrapper lg:col-span-6"
+            >
               <div class="flex items-center justify-between">
                 <h2 class="card-heading pb-0">Score History</h2>
 
@@ -733,7 +722,7 @@
                       @click="historyActive = item"
                       x-text="item"
                       :class="historyActive==item ? 'bg-[#55E597] text-white' : 'text-neutral-400'"
-                      class="cursor-pointer rounded-sm px-3 py-2 text-sm hover:bg-[#55E597] hover:text-white"
+                      class="cursor-pointer rounded-sm px-3 py-2 text-sm transition-colors hover:bg-[#55E597] hover:text-white"
                     ></span>
                   </template>
                 </div>
@@ -743,7 +732,11 @@
             </div>
 
             <!-- Critical Feedback -->
-            <div class="card-wrapper lg:col-span-5">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
+              class="card-wrapper lg:col-span-5"
+            >
               <h2 class="card-heading">Critical Feedback</h2>
 
               <div class="py-4">
@@ -767,6 +760,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="./public/main.js"></script>
   </body>
 </html>

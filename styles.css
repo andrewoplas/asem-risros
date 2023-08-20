@@ -18,6 +18,10 @@
   .card-heading {
     @apply pb-6 text-xl font-bold text-[#223043];
   }
+
+  .badge {
+    @apply cursor-pointer rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-800;
+  }
 }
 
 #chart-column-summary .apexcharts-xaxis-label tspan:first-child {
@@ -33,6 +37,10 @@
   --swiper-pagination-bottom: 0;
   --swiper-pagination-bullet-inactive-color: #f2f2f2;
   --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  transition: 300ms;
 }
 
 .swiper-pagination .swiper-pagination-bullet-active {
