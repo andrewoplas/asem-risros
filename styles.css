@@ -12,7 +12,7 @@
 
 @layer components {
   .card-wrapper {
-    @apply w-full rounded-sm border border-[#dbdbdb] bg-white p-6 md:p-8;
+    @apply w-full rounded-md border border-[#dbdbdb] bg-white p-6 md:p-8;
   }
 
   .card-heading {

@@ -278,14 +278,18 @@
 
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
             <!-- Summary -->
-            <div data-aos="fade-up" class="card-wrapper lg:col-span-6">
+            <div
+              data-aos="fade-up"
+              data-aos-once="true"
+              class="card-wrapper lg:col-span-6"
+            >
               <h2 class="card-heading">Summary</h2>
 
-              <div class="flex w-full flex-col gap-6 lg:flex-row lg:gap-0">
-                <div class="border-r-[#E3EAF5] lg:border-r">
+              <div class="flex w-full flex-col gap-6 md:flex-row md:gap-0">
+                <div class="border-r-[#E3EAF5] md:border-r">
                   <div id="chart-radial-excellent"></div>
                   <h4
-                    class="mt-2 text-center text-xl font-bold md:mt-4 md:text-2xl lg:text-4xl"
+                    class="mt-2 text-center text-xl font-bold md:mt-4 md:text-2xl lg:text-3xl xl:text-4xl"
                   >
                     Excellent
                   </h4>
@@ -322,6 +326,7 @@
             <!-- Rating Point -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="100"
               class="card-wrapper lg:col-span-6"
             >
@@ -331,6 +336,7 @@
             <!-- Feedback -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="200"
               class="card-wrapper lg:col-span-7"
             >
@@ -456,6 +462,7 @@
             <!-- Critical Feedback -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="300"
               class="card-wrapper lg:col-span-5"
             >
@@ -597,16 +604,17 @@
             <!-- Lead Conversion Funnel -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="100"
               class="card-wrapper lg:col-span-6"
             >
               <h2 class="card-heading">Lead Conversion Funnel</h2>
 
               <div
-                class="grid grid-cols-1 gap-6 divide-gray-100 md:grid-cols-12 md:gap-0 md:divide-x"
+                class="grid gap-6 divide-gray-100 md:grid-cols-12 md:gap-0 md:divide-x"
               >
                 <div
-                  class="divide-y divide-gray-100 md:pr-8 lg:col-span-5"
+                  class="divide-y divide-gray-100 md:pr-8 md:col-span-5"
                   x-data="{items: [
                   {title: 'Surveys Opened', value: '1,000'}, 
                   {title: 'Surveys Completed', value: '904'}, 
@@ -623,7 +631,7 @@
                 </div>
 
                 <div
-                  class="flex flex-1 flex-col gap-10 md:pl-8 lg:col-span-7"
+                  class="flex flex-1 flex-col gap-10 md:pl-8 md:col-span-7"
                   x-data="{items: [100, 90, 70,51]}"
                 >
                   <template x-for="item in items">
@@ -658,6 +666,7 @@
             <!-- Score History -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="200"
               class="card-wrapper lg:col-span-6"
             >
@@ -685,6 +694,7 @@
             <!-- Critical Feedback -->
             <div
               data-aos="fade-up"
+              data-aos-once="true"
               data-aos-delay="300"
               class="card-wrapper lg:col-span-5"
             >

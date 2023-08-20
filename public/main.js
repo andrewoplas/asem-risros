@@ -3,7 +3,7 @@ const chartRadialExcellent = new ApexCharts(
   {
     series: [87],
     chart: {
-      height: 225,
+      width: 300,
       type: "radialBar",
     },
     colors: ["#55E597"],
@@ -32,17 +32,50 @@ const chartRadialExcellent = new ApexCharts(
     labels: ["87"],
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1199,
         options: {
+          chart: {
+            width: 200,
+          },
           plotOptions: {
             radialBar: {
               dataLabels: {
                 name: {
-                  fontSize: "3.5rem",
-                  offsetY: "22%",
+                  fontSize: "2.5rem",
+                  offsetY: "17%",
                 },
               },
             },
+          },
+        },
+      },
+      {
+        breakpoint: 1023,
+        options: {
+          chart: {
+            width: 300,
+          },
+          plotOptions: {
+            radialBar: {
+              hollow: {
+                size: "72%",
+              },
+              dataLabels: {
+                name: {
+                  fontSize: "3.5rem",
+                  offsetY: "25%",
+                },
+              },
+            },
+          },
+        },
+      },
+      {
+        breakpoint: 767,
+        options: {
+          chart: {
+            height: 250,
+            width: "100%",
           },
         },
       },
