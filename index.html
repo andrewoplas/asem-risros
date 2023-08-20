@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risros</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="./public/styles.css" rel="stylesheet" />
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="bg-gray-light">
+    <div class="min-h-full">
+      <nav>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-8 w-8" src="./public/images/logo.svg" alt="Logo" />
+              </div>
+            </div>
+
+            <div class="ml-4 flex items-center md:ml-6">
+              <!-- Profile dropdown -->
+              <div class="relative ml-3" x-data="{ isMenuActive: false }">
+                <div>
+                  <button
+                    @click="isMenuActive = !isMenuActive"
+                    type="button"
+                    class="hover:bg-theme-text border-theme-text rounded-md border px-4 py-2 text-xs font-semibold hover:text-white md:text-base"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <span class="absolute -inset-1.5"></span>
+                    Dashboard
+                  </button>
+                </div>
+
+                <div
+                  class="border-theme-gray-dark absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-md border bg-white p-4 shadow-lg focus:outline-none md:w-64"
+                  id="user-menu"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
+                  tabindex="-1"
+                  x-cloak
+                  x-transition
+                  x-show="isMenuActive"
+                  @click.away="isMenuActive = false"
+                  @keydown.escape.window="isMenuActive = false"
+                >
+                  <div
+                    class="border-theme-gray-light flex items-center gap-4 border-b p-1 pb-4"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      class="w-12 rounded"
+                    />
+                    <div class="flex flex-col gap-1">
+                      <div class="flex items-center gap-1">
+                        <span class="text-sm font-medium">Robert Fox</span>
+                        <span
+                          class="text-emerald block rounded bg-[#ECFEF4] px-1 text-xs text-[#74C98F]"
+                          >Pro</span
+                        >
+                      </div>
+                      <span class="text-xs font-light text-gray-400"
+                        >robert@google.com</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="border-b-theme-gray-light flex flex-col gap-1 border-b py-2"
+                  >
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                    >
+                      My Profile
+                    </a>
+                    <a
+                      href="#"
+                      class="flex items-center gap-2 rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                    >
+                      My Projects
+                      <div
+                        class="d-block text-xxs flex h-4 w-4 items-center justify-center rounded-full bg-[#FDF5F8] font-serif font-bold text-[#DF5170]"
+                      >
+                        3
+                      </div>
+                    </a>
+                    <div
+                      class="relative cursor-pointer rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      x-data="{ isSubscriptionActive: false }"
+                      @click="isSubscriptionActive = !isSubscriptionActive"
+                    >
+                      <div
+                        class="flex items-center justify-between gap-2 text-inherit"
+                      >
+                        <span class="text-inherit">My Subscription</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="h-4 w-4 text-inherit"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+
+                      <div
+                        class="border-theme-gray-dark z-11 absolute -left-[95%] top-0 mt-2 w-36 origin-top-right rounded-md border bg-white p-4 shadow-lg focus:outline-none md:w-48"
+                        role="menu"
+                        aria-orientation="vertical"
+                        tabindex="-1"
+                        x-cloak
+                        x-transition
+                        x-show="isSubscriptionActive"
+                        @click.away="isSubscriptionActive = false"
+                        @keydown.escape.window="isSubscriptionActive = false"
+                      >
+                        <a
+                          href="#"
+                          class="block rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                        >
+                          Subscription 1
+                        </a>
+                        <a
+                          href="#"
+                          class="block rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                        >
+                          Subscription 2
+                        </a>
+                        <a
+                          href="#"
+                          class="block rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                        >
+                          Subscription 3
+                        </a>
+                      </div>
+                    </div>
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      >My Statements</a
+                    >
+                  </div>
+
+                  <div class="flex flex-col gap-1 pt-2">
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      >Mode</a
+                    >
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      >Language</a
+                    >
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      >Account Settings</a
+                    >
+                    <a
+                      href="#"
+                      class="rounded px-2 py-2 text-sm hover:bg-gray-50 hover:text-blue-500"
+                      >Sign Out</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <div class="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 lg:px-8">
+          <!-- Header -->
+          <div class="mb-6 flex items-center justify-between md:mb-9">
+            <h1 class="text-2xl font-medium">Klinik Holmberg</h1>
+            <div class="flex items-center">
+              <span class="text-gray-400">Location: </span>
+              <div x-data="{ isActive: false }" class="relative">
+                <div class="inline-flex items-center overflow-hidden">
+                  <a
+                    @click="isActive = !isActive"
+                    href="#"
+                    class="py-2 pl-4 pr-2 font-bold text-gray-600"
+                  >
+                    Rødovre
+                  </a>
+
+                  <button
+                    @click="isActive = !isActive"
+                    class="h-full text-gray-600"
+                  >
+                    <span class="sr-only">Menu</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div
+                  class="absolute end-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white shadow-lg"
+                  role="menu"
+                  x-cloak
+                  x-transition
+                  x-show="isActive"
+                  @click.away="isActive = false"
+                  @keydown.escape.window="isActive = false"
+                >
+                  <div class="p-2">
+                    <a
+                      href="#"
+                      class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                      role="menuitem"
+                    >
+                      Location 1
+                    </a>
+                    <a
+                      href="#"
+                      class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                      role="menuitem"
+                    >
+                      Location 2
+                    </a>
+                    <a
+                      href="#"
+                      class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                      role="menuitem"
+                    >
+                      Location 3
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
+            <!-- Summary -->
+            <div class="card-wrapper lg:col-span-6">
+              <h2 class="card-heading">Summary</h2>
+
+              <div class="flex w-full flex-col gap-6 lg:flex-row lg:gap-0">
+                <div class="border-r-[#E3EAF5] lg:border-r">
+                  <div id="chart-radial-excellent"></div>
+                  <h4
+                    class="mt-2 text-center text-xl font-bold md:mt-4 md:text-2xl lg:text-4xl"
+                  >
+                    Excellent
+                  </h4>
+                  <div
+                    class="mt-2 flex items-center justify-center gap-2 md:mt-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="13"
+                      viewBox="0.42 5.613 17 13"
+                    >
+                      <path
+                        d="m8.92 5.613 8.5 13h-17z"
+                        fill="#55e598"
+                        fill-rule="evenodd"
+                        data-name="Polygon 1"
+                      />
+                    </svg>
+                    <div class="font-light"><b>1</b> in the last month</div>
+                  </div>
+                </div>
+
+                <div class="flex-1">
+                  <div id="chart-column-summary"></div>
+
+                  <span class="block text-center text-xs text-gray-400"
+                    >14% negative - 12% neutral - 74% postive</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Rating Point -->
+            <div class="card-wrapper lg:col-span-6">
+              <h2 class="card-heading">Rating Point</h2>
+            </div>
+
+            <!-- Feedback -->
+            <div class="card-wrapper lg:col-span-7">
+              <h2 class="card-heading">Feedback</h2>
+
+              <div class="divide-y divide-gray-100">
+                <div
+                  class="flex w-full items-start gap-3 py-4 md:gap-5 md:py-6"
+                >
+                  <svg
+                    class="shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29"
+                    height="28"
+                    viewBox="0.269 -0.289 29 28"
+                  >
+                    <path
+                      d="M.269 13.661a14.5 14 0 1 1 0 .1z"
+                      fill="#55e597"
+                      fill-rule="evenodd"
+                      data-name="Ellipse 10"
+                    />
+                  </svg>
+
+                  <div
+                    class="flex flex-1 flex-col items-start justify-between gap-4 md:flex-row md:gap-6"
+                  >
+                    <div>
+                      <p>
+                        Super god service med sødt personale, som var meget
+                        forstående
+                      </p>
+                      <span class="text-sm font-light text-neutral-400"
+                        >Yestarday at 14:06</span
+                      >
+                    </div>
+
+                    <div class="flex gap-2">
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Kommunikation</span
+                      >
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Pris</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="flex w-full items-start gap-3 py-4 md:gap-5 md:py-6"
+                >
+                  <svg
+                    class="shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29"
+                    height="28"
+                    viewBox="0.269 -0.289 29 28"
+                  >
+                    <path
+                      d="M.269 13.661a14.5 14 0 1 1 0 .1z"
+                      fill="#55e597"
+                      fill-rule="evenodd"
+                      data-name="Ellipse 10"
+                    />
+                  </svg>
+
+                  <div
+                    class="flex flex-1 flex-col items-start justify-between gap-4 md:flex-row md:gap-6"
+                  >
+                    <div>
+                      <p>
+                        Super god service med sødt personale, som var meget
+                        forstående
+                      </p>
+                      <span class="text-sm font-light text-neutral-400"
+                        >Yestarday at 14:06</span
+                      >
+                    </div>
+
+                    <div class="flex gap-2">
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Betjening</span
+                      >
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Andet</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="flex w-full items-start gap-3 py-4 md:gap-5 md:py-6"
+                >
+                  <svg
+                    class="shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29"
+                    height="28"
+                    viewBox="0.269 -0.289 29 28"
+                  >
+                    <path
+                      d="M.269 13.661a14.5 14 0 1 1 0 .1z"
+                      fill="#55e597"
+                      fill-rule="evenodd"
+                      data-name="Ellipse 10"
+                    />
+                  </svg>
+
+                  <div
+                    class="flex flex-1 flex-col items-start justify-between gap-4 md:flex-row md:gap-6"
+                  >
+                    <div>
+                      <p>
+                        Super god service med sødt personale, som var meget
+                        forstående
+                      </p>
+                      <span class="text-sm font-light text-neutral-400"
+                        >Yestarday at 14:06</span
+                      >
+                    </div>
+
+                    <div class="flex gap-2">
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Ventetid</span
+                      >
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Behandling</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="flex w-full items-start gap-3 pt-4 md:gap-5 md:pt-6"
+                >
+                  <svg
+                    class="shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29"
+                    height="28"
+                    viewBox="0.269 -0.289 29 28"
+                  >
+                    <path
+                      d="M.269 13.661a14.5 14 0 1 1 0 .1z"
+                      fill="#55e597"
+                      fill-rule="evenodd"
+                      data-name="Ellipse 10"
+                    />
+                  </svg>
+
+                  <div
+                    class="flex flex-1 flex-col items-start justify-between gap-4 md:flex-row md:gap-6"
+                  >
+                    <div>
+                      <p>
+                        Jeg er ret misfornøjet over at I har hævet min pris med
+                        18%. Jeg har siden sommerferien været fast kunde med 10x
+                        skjorter. Nu har I valgt at lægge 2 x kørsel på min
+                        pris.
+                      </p>
+                      <span class="text-sm font-light text-neutral-400"
+                        >Yestarday at 14:06</span
+                      >
+                    </div>
+
+                    <div class="flex gap-2">
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Kommunikation</span
+                      >
+                      <span
+                        class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                        >Pris</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Critical Feedback -->
+            <div class="card-wrapper lg:col-span-5">
+              <h2 class="card-heading">Critical Feedback</h2>
+
+              <div class="relative">
+                <div class="swiper" x-init="initCarousel()">
+                  <div class="swiper-wrapper" x-data>
+                    <template x-for="i in 4">
+                      <div class="swiper-slide">
+                        <div class="rounded border border-red-200 p-6">
+                          <div class="flex items-start gap-4">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="46.215"
+                              height="44.503"
+                              viewBox="0 -0.05 46.215 44.503"
+                              class="h-10 w-10"
+                            >
+                              <path
+                                d="M0 22.152a23.107 22.252 0 1 1 0 .1z"
+                                fill="#ff595a"
+                                fill-rule="evenodd"
+                                data-name="Ellipse 10"
+                              />
+                            </svg>
+                            <div class="flex-1">
+                              <b>Lars Andersen</b>
+                              <p class="text-sm font-light text-neutral-400">
+                                Yestarday at 14:06
+                              </p>
+                            </div>
+                            <div x-data="{isOpen: false}" class="relative">
+                              <button
+                                @click="isOpen = !isOpen"
+                                class="rounded-sm border border-gray-100 bg-gray-50 px-1 py-0 hover:bg-gray-100"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1.5"
+                                  stroke="currentColor"
+                                  class="h-5 w-5"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                                  />
+                                </svg>
+                              </button>
+
+                              <div
+                                class="absolute end-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white shadow-lg"
+                                x-cloak
+                                x-transition
+                                x-show="isOpen"
+                                @click.away="isOpen = false"
+                                @keydown.escape.window="isOpen = false"
+                              >
+                                <div class="p-2">
+                                  <a
+                                    href="#"
+                                    class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                    role="menuitem"
+                                  >
+                                    Option 1
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                    role="menuitem"
+                                  >
+                                    Option 2
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="block rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                    role="menuitem"
+                                  >
+                                    Option 3
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <p class="mt-7">
+                            Skuffelsen kan næsten ikk beskrives et halvt år i
+                            forløb, et halvt år med gentagelser om uønskede ting
+                            i kostplan og stadig ikke en kostplan.
+                          </p>
+
+                          <div
+                            class="mb-9 mt-8 flex divide-x border-y-2 border-gray-100"
+                          >
+                            <div class="flex items-center gap-2 p-4 pl-0">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="h-4 w-4 stroke-gray-400"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                                />
+                              </svg>
+                              <span>123 456 789</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-4 pr-0">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="h-4 w-4 stroke-gray-400"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                />
+                              </svg>
+                              <span>Lars.a@gmail.com</span>
+                            </div>
+                          </div>
+
+                          <div class="flex gap-2">
+                            <span
+                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                            >
+                              Kommunikation
+                            </span>
+                            <span
+                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                            >
+                              Betjening
+                            </span>
+                            <span
+                              class="rounded-sm bg-gray-100 p-2 text-xs font-bold text-gray-600"
+                            >
+                              Pris
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                <div class="swiper-pagination mt-4"></div>
+              </div>
+            </div>
+
+            <!-- Lead Conversion Funnel -->
+            <div class="card-wrapper lg:col-span-6">
+              <h2 class="card-heading">Lead Conversion Funnel</h2>
+
+              <div
+                class="grid grid-cols-1 gap-6 divide-gray-100 md:grid-cols-12 md:gap-0 md:divide-x"
+              >
+                <div
+                  class="divide-y divide-gray-100 md:pr-8 lg:col-span-5"
+                  x-data="{items: [
+                  {title: 'Surveys Opened', value: '1,000'}, 
+                  {title: 'Surveys Completed', value: '904'}, 
+                  {title: 'Positive Responses', value: '700'}, 
+                  {title: 'CTA Clicked', value: '510'}, 
+                ]}"
+                >
+                  <template x-for="item in items">
+                    <div class="flex items-center justify-between py-5">
+                      <span x-text="item.title"></span>
+                      <b x-text="item.value"></b>
+                    </div>
+                  </template>
+                </div>
+
+                <div
+                  class="flex flex-1 flex-col gap-10 md:pl-8 lg:col-span-7"
+                  x-data="{items: [100, 90, 70,51]}"
+                >
+                  <template x-for="item in items">
+                    <div class="flex items-center gap-4">
+                      <span
+                        class="w-12 shrink-0 rounded-sm bg-blue-50 px-2 py-1 text-center text-xs font-medium text-blue-500"
+                        x-text="item + '%'"
+                      >
+                      </span>
+
+                      <div class="flex-1">
+                        <span id="ProgressLabel" class="sr-only">Loading</span>
+
+                        <span
+                          role="progressbar"
+                          aria-labelledby="ProgressLabel"
+                          aria-valuenow="75"
+                          class="block bg-indigo-50"
+                        >
+                          <span
+                            class="block h-3 bg-indigo-400"
+                            :style="{ width: item + '%' }"
+                          ></span>
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <!-- Score History -->
+            <div class="card-wrapper lg:col-span-6">
+              <div class="flex items-center justify-between">
+                <h2 class="card-heading pb-0">Score History</h2>
+
+                <div
+                  x-data="{items: ['1d', '5d', '1m', '6m', '1y'], historyActive: '6m'}"
+                  class="flex gap-2 md:gap-6"
+                >
+                  <template x-for="item in items">
+                    <span
+                      @click="historyActive = item"
+                      x-text="item"
+                      :class="historyActive==item ? 'bg-[#55E597] text-white' : 'text-neutral-400'"
+                      class="cursor-pointer rounded-sm px-3 py-2 text-sm hover:bg-[#55E597] hover:text-white"
+                    ></span>
+                  </template>
+                </div>
+              </div>
+
+              <div id="chart-score-history" class="mt-6"></div>
+            </div>
+
+            <!-- Critical Feedback -->
+            <div class="card-wrapper lg:col-span-5">
+              <h2 class="card-heading">Critical Feedback</h2>
+
+              <div class="py-4">
+                <p class="mx-auto max-w-sm text-center text-base md:text-xl">
+                  <b>Excellent!</b> You've addressed all Customer Concerns. Keep
+                  up the great work!
+                </p>
+                <img
+                  class="mx-auto mt-6 sm:mt-8 md:mt-12"
+                  src="/public/images/lady-success.svg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- <div id="chart-column-summary"></div> -->
+    <!-- <div id="chart-radial-excellent"></div> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="./public/main.js"></script>
+  </body>
+</html>

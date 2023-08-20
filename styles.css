@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  color: #223043;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+@layer components {
+  .card-wrapper {
+    @apply w-full rounded-sm border border-[#dbdbdb] bg-white p-6 md:p-8;
+  }
+
+  .card-heading {
+    @apply pb-6 text-xl font-bold text-[#223043];
+  }
+}
+
+#chart-column-summary .apexcharts-xaxis-label tspan:first-child {
+  @apply text-base font-bold;
+}
+
+#chart-column-summary .apexcharts-xaxis-label tspan:nth-child(2) {
+  @apply fill-[#959595] text-xs font-light;
+}
+
+.swiper-pagination {
+  position: relative;
+  --swiper-pagination-bottom: 0;
+  --swiper-pagination-bullet-inactive-color: #f2f2f2;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  --swiper-pagination-bullet-width: 1.5em;
+  --swiper-pagination-bullet-border-radius: 100px;
+  --swiper-pagination-color: #70e8a7;
+}
